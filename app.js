@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = require('./routes');
-const { NOT_FOUND } = require('./controllers/errors');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -15,12 +14,10 @@ app.use((req, res, next) => {
 });
 
 app.use(router);
-app.use('*', (req, res) => {
-  res.status(NOT_FOUND).send({ message: 'Страница не найдена' });
-});
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Слушаю порт ${PORT}`);
 });
