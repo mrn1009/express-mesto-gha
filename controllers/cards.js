@@ -24,7 +24,7 @@ const createCard = (req, res) => {
     });
 };
 
-//удаление карточки
+// удаление карточки
 const deleteCard = (req, res) => {
   Card.findByIdAndRemove(req.params.cardId)
     .orFail(() => new Error('Not Found'))
@@ -40,7 +40,7 @@ const deleteCard = (req, res) => {
     });
 };
 
-//постановка лайка
+// постановка лайка
 const likeCard = (req, res) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
@@ -60,7 +60,7 @@ const likeCard = (req, res) => {
     });
 };
 
-//удаление лайка
+// удаление лайка
 const dislikeCard = (req, res) => {
   Card.findByIdAndUpdate(
     req.params.cardId,

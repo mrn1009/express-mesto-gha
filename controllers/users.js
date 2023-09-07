@@ -41,7 +41,7 @@ const createUser = (req, res) => {
     });
 };
 
-//обновляет профиль
+// обновляет профиль
 const updateProfile = (req, res) => {
   const { name, about } = req.body;
 
@@ -59,7 +59,7 @@ const updateProfile = (req, res) => {
     });
 };
 
-//обновляет аватар
+// обновляет аватар
 const updateAvatar = (req, res) => {
   const { avatar } = req.body;
 
