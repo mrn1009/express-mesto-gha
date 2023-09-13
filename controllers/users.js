@@ -29,9 +29,14 @@ const getUsersById = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
+  const {
+    name, about, avatar, email,
+  } = req.body;
   bcrypt.hash(String(req.body.password), 10)
     .then((hashedPassword) => {
-      User.create({ ...req.body, password: hashedPassword })
+      User.create({
+        name, about, avatar, email, password: hashedPassword,
+      })
         .then((user) => res.status(201).send({ data: user }))
         .catch((err) => {
           if (err.name === 'ValidationError') {
@@ -42,8 +47,7 @@ const createUser = (req, res, next) => {
             next(err);
           }
         });
-    })
-    .catch(next);
+    });
 };
 
 const login = (req, res, next) => {
